@@ -19,13 +19,11 @@ import android.view.WindowManager;
  */
 public class ProgressView extends View {
     private int viewWidth = (int) (getScreenWidth() * 0.6f);
-    //    private int viewWidth = 600;
     private int viewHeight = viewWidth;
     private int centerX = viewWidth / 2;
     private int centerY = viewHeight / 2;
     private Paint degreePaint;
     private int degreeLength = viewWidth / 18;//刻度的长度
-    //    private int textSize = dp2px(60);
     private int textSize = viewWidth / 3;
     private int count = 180;
     private int offset = viewWidth / 18;
@@ -95,7 +93,7 @@ public class ProgressView extends View {
         buttonPaint.setAntiAlias(true);
         buttonPaint.setStyle(Paint.Style.STROKE);
         buttonPaint.setStrokeCap(Paint.Cap.ROUND);
-        buttonPaint.setStrokeWidth(textSize / 3);
+        buttonPaint.setStrokeWidth(viewWidth / 9);
         buttonPaint.setColor(getResources().getColor(android.R.color.holo_blue_light));
 
         buttonTextPaint = new Paint();
@@ -144,6 +142,10 @@ public class ProgressView extends View {
                 degreePaint.setColor(getResources().getColor(android.R.color.holo_red_light));
                 canvas.drawLine(0, centerY, degreeLength, centerY, degreePaint);
                 canvas.rotate(360 / count, centerX, centerY);
+            }
+            // 绘制最后一格刻度
+            if (currentAngle*2 == 360*3/4){
+                canvas.drawLine(0,centerY,degreeLength,centerY,degreePaint);
             }
         }
     }

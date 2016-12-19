@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ProgressView progressView = (ProgressView) findViewById(R.id.progress);
-        progressView.setCurrentCount(1000,860);
+        progressView.setCurrentCount(1000,100);
         progressView.setCommandClickListener(new ProgressView.CommandClickListener() {
             @Override
             public void onCommandClick(View view) {
